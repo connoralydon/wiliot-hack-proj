@@ -16,7 +16,9 @@ I'm going to tackle the first idea there. Good way to start accessing the api an
 
 1. see how API works in general and what routes i need to use
 1. build command line interface
-   1. add fixed number of assets and pixels
+   1. add fixed number of assets and PIXELS
+   1. add asset each time we scan something
+      1. do except for duplicate assets
 2. build flask front end
 
 
