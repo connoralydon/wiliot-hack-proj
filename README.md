@@ -22,6 +22,8 @@ I'm going to tackle the first idea there. Good way to start accessing the api an
 2. build flask front end
 
 
+pdoc env/lib/python3.9/site-packages/wiliot/cloud_apis/traceability/traceability.py
+
 
 ### terms
 app === connection
