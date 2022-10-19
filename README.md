@@ -16,6 +16,24 @@ I'm going to tackle the first idea there. Good way to start accessing the api an
 
 1. see how API works in general and what routes i need to use
 1. build command line interface
-1. build flask front end
+   1. add fixed number of assets and pixels
+2. build flask front end
 
+
+
+### terms
+app === connection
+
+asset (virtual representation of physical objkect)
+- sku === label
+- pixels === tags
+
+
+### steps to duplicate
+1. `python -m venv env`
+2. `source env/bin/activate`
+3. `pip install requirements.txt`
+4. Have qr scanner connected.
+5. Have SKU labels and PIXEL labels ready, as well as termination QR code 
+6. `python qr_app.py`
 
