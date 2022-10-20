@@ -33,6 +33,9 @@ asset (virtual representation of physical objkect)
 - pixels === tags
 
 
+
+
+
 ### steps to duplicate
 1. `python -m venv env`
 2. `source env/bin/activate`
@@ -41,3 +44,21 @@ asset (virtual representation of physical objkect)
 5. Have SKU labels and PIXEL labels ready, as well as termination QR code 
 6. `python qr_app.py`
 
+
+# batch add application
+
+Creating a batch add website that tracks the items that have been added and the count them. They will be added as they are scanned in however, There will be functionality to modify the count of each item being added in the meantime the SKU would just be the SKU not what the product is this is some future functionality.
+
+1. single page app
+   1. settings
+      1. location id (future: make dropdown)
+      2. number of tags per asset
+   2. table with columns
+      1. future item lookup (with image)
+      2. SKU
+      3. Count of that SKU
+      4. Location
+    1. finish button
+
+
+running into some problems, there are only records of the most recent

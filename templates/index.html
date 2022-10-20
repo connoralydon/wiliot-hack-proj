@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block head %} 
+<title>Bulk Adder: Wiliot</title>
+{% endblock%}
+
+{% block body %} 
+<div class="content">
+    <h1 style="text-align: center">Wiliot Asset Bulk Adder</h1>
+    
+    <!-- <form action="/update_tag_count/" method="POST">
+        <p>Tags per asset</p>
+        <input type="text" name="tag_count" id="tag_count" placeholder="Number of Tags Per Asset" value="{{ num_tags }}" tagindex="-1">
+        <input type="submit" value="Update Tag Count">
+    </form> -->
+
+    
+    <form action="/incriment"  method="POST">
+        <p>Add new asset</p>
+        <input type="text" name="sku" id="sku" placeholder="SKU Identifier">
+        <input type="text" name="tags" id="tags" placeholder="Singe Tag"> 
+        <input type="submit" value="Add Asset">
+    </form>
+
+    {% if rendered_assets|length < 1 %}
+    <h4>No assets recently added, add one.</h4>
+    {% else %}
+    <h4>Count by SKU. Decreasing it, removes the most recent item.</h4>
+    <table>
+        <tr>
+            <th>Count</th>
+            <th>SKU</th>
+            <th>Item Name</th>
+            <th>Data Modified</th>
+        </tr>
+        {% for asset in rendered_assets %}    
+            <tr>
+                <td>{{ asset.asset_len }}</td>
+                <td>{{ asset.sku }}</td>
+                <td>{{ asset.item_name }}</td>
+                <td>{{ asset.date_modified }}</td>
+                <td>
+                    <a href="/decriment/{{ asset.sku }}">Remove Recent</a>
+                </td>
+            </tr>
+        {% endfor %}
+    <table>
+    {% endif %}
+
+{% endblock%}

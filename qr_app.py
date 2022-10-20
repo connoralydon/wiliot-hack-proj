@@ -1,5 +1,4 @@
-import requests
-import json
+# qr_app.py
 
 from wiliot.cloud_apis.management.management import *
 from wiliot.cloud_apis.traceability.traceability import *
@@ -29,20 +28,16 @@ def collect_asset_data_qr(termination_char: str = "done",
 
     # asset data to add
     asset_data_to_upload = []
-
+    tag_count = 2
     # do while
     label = input("SCAN SKU").strip()
     while label != "done":
         # doing work in here to add assets to the server
         tags = set()
-        tag = input("SCAN TAG").strip() # do while
+        for i in range(tag_count):
+            tag = input("SCAN TAG").strip() # do while
+            tags.add(tag)
         
-        j = 0
-        # while tag != "done" and j < 8: 
-        tags.add(tag)
-        # tag = input("SCAN TAG").strip()
-            
-        j += 1
         
         label = input("SCAN SKU").strip()
         
