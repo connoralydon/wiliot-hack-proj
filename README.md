@@ -1,31 +1,20 @@
-# wiliot-test
+# wiliot-hack
 
 
-### project ideas
+### files here
 
-1. **command line to utilize qr code scanner to easily add new pixels to an account**
-    - by extension also adding bridges
-    - measuring employee performance
-1. tool to measure employee learning rate and how fast they add tags, measuring time to becoming efficient at adding new tags to a network. it should help add tangible values to how much it costs to add tags to the platform
-
-### plan
-
-I'm going to tackle the first idea there. Good way to start accessing the api and make a easily usable application. If I have time I'll build this into a flask app for taking input and uploading it to the wiliot cloud. 
-
-#### tasks
-
-1. see how API works in general and what routes i need to use
-1. build command line interface
-   1. add fixed number of assets and PIXELS
-   1. add asset each time we scan something
-      1. do except for duplicate assets
-2. build flask front end
+1. app.py 
+   1. web app to bulk add items
+2. qr_app.py
+   1. command line tool to add tags with set number of tags
 
 
-pdoc env/lib/python3.9/site-packages/wiliot/cloud_apis/traceability/traceability.py
+
+### building docs on traceability 
+`pdoc env/lib/python3.9/site-packages/wiliot/cloud_apis/traceability/traceability.py`
 
 
-### terms
+### terminology
 app === connection
 
 asset (virtual representation of physical objkect)
@@ -34,31 +23,20 @@ asset (virtual representation of physical objkect)
 
 
 
+### steps to deploy
+*I am a socker novice, so this deployment may be buggy, ideally I want to have an environment to develop on, not just build*
+This docker container runs the app.py (web app). I'm not totally sure how to get the command line program working.
+1. have docker installed
+2. `docker image build -t wiliot-hack .`
+3. `docker run -p 80:80 --name wiliot-hack wiliot-hack`
+4. `docker start wiliot-hack`
+5. `docker stop wiliot-hack`
 
-
-### steps to duplicate
+### steps to duplicate dev environment
+1. python 3.9+
 1. `python -m venv env`
 2. `source env/bin/activate`
 3. `pip install requirements.txt`
 4. Have qr scanner connected.
 5. Have SKU labels and PIXEL labels ready, as well as termination QR code 
-6. `python qr_app.py`
-
-
-# batch add application
-
-Creating a batch add website that tracks the items that have been added and the count them. They will be added as they are scanned in however, There will be functionality to modify the count of each item being added in the meantime the SKU would just be the SKU not what the product is this is some future functionality.
-
-1. single page app
-   1. settings
-      1. location id (future: make dropdown)
-      2. number of tags per asset
-   2. table with columns
-      1. future item lookup (with image)
-      2. SKU
-      3. Count of that SKU
-      4. Location
-    1. finish button
-
-
-running into some problems, there are only records of the most recent
+6. `python qr_app.py` or `python app.py`
