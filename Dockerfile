@@ -14,6 +14,14 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 # configure the container to run in an executed manner
-ENTRYPOINT [ "python" ]
+ENTRYPOINT [ "bash" ]
 
 CMD ["app.py" ]
+
+# docker image build -t wiliot-hack .
+
+# docker run -p 80:80 --name wiliot-hack wiliot-hack
+
+# docker start wiliot-hack
+
+# docker stop wiliot-hack

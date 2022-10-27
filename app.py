@@ -1,6 +1,7 @@
 # app.py
 
 from wiliot_helpers import delete_all_assets
+# THIS RESETS THE ACCOUNT AND DELETES ALL ASSETS ASSOCIATED WITH IT
 delete_all_assets()
 
 # home for the flask app
@@ -10,7 +11,6 @@ from flask import (Flask,
                    url_for,
                    request,
                    redirect)
-
 
 from datetime import datetime
 
@@ -75,7 +75,8 @@ class SkuAssets: # to access db
 
     def get_count(self) -> int:
         return self.asset_len
-        
+    
+    # if searching through each bucket, for now we are popping
     # def remove_asset(self, asset_id):
     #     self.update_time()
     #     try:
@@ -88,9 +89,6 @@ class SkuAssets: # to access db
 
 
 num_tags_per_asset = 2
-# assets: dict[str,SkuAssets] =  {'a': SkuAssets()} # list of 
-# SkuAssets objects
-# sku, skuassets object
 assets: dict[str,SkuAssets] =  {} # this keeps resetting the 
 
 @app.route("/", methods = ["POST","GET"])
@@ -110,7 +108,6 @@ def update_tag_count():
     num_tags_per_asset = request.form['tag_count']
     return redirect("/")
     
-
 
 @app.route("/decriment/<string:sku>")
 def decriment_sku(sku):
@@ -135,17 +132,12 @@ def incriment():
         if sku_to_add not in assets.keys():
             assets[sku_to_add] = SkuAssets(sku_to_add,sku_to_add)
         
-        # see if any new tags are in the old tags
-        # if tags_to_add in assets[sku_to_add].asset_id_stack:
-        #     print("duplicate asset_id")
-        # else:
         assets[sku_to_add].add_asset(sku_to_add, hash(tags_to_add[0]), tags_to_add)
         
         return redirect("/")
     else:
         return 'incriment'
 
-
-# change this for real deployment
+# change this for real web deployment
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
