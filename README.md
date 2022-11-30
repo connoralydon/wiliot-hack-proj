@@ -1,5 +1,9 @@
 # wiliot-hack
 
+### env
+
+need to rebuild .env file to contain tokens
+(can find tokens and info on [wiliot developer portal](developer.wiliot.com))
 
 ### files here
 
